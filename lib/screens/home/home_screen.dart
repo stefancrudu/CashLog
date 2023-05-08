@@ -8,6 +8,7 @@ import 'package:cash_log/screens/home/components/balance_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -89,8 +90,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           children: [
             documents.list.isNotEmpty
                 ? listView
-                : const Center(
-                    child: Text('You don\'t have documnents.'),
+                : Center(
+                    child:
+                        Text(AppLocalizations.of(context)!.noDocumentsMessage),
                   ),
             BalanceWidget(
               balance: documents.balance,

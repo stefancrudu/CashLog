@@ -1,12 +1,14 @@
 import 'package:cash_log/models/balance.dart';
+import 'package:cash_log/screens/home/components/balance_row.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BalanceWidget extends StatelessWidget {
-  Balance balance;
+  final Balance balance;
 
-  BalanceWidget({
+  const BalanceWidget({
     super.key,
     required this.balance,
   });
@@ -28,31 +30,34 @@ class BalanceWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              totalLabel(label: 'Sold inital', value: balance.initialBalance),
+              BalanceRow(
+                content: AppLocalizations.of(context)!
+                    .initialBalance(balance.initialBalance),
+              ),
               const SizedBox(
                 height: 10,
               ),
-              totalLabel(label: 'Total de incasat', value: balance.totalCashIn),
+              BalanceRow(
+                content: AppLocalizations.of(context)!
+                    .totalCashInBalance(balance.totalCashIn),
+              ),
               const SizedBox(
                 height: 10,
               ),
-              totalLabel(label: 'Total de plata', value: balance.totalCashOut),
+              BalanceRow(
+                content: AppLocalizations.of(context)!
+                    .totalCashOutBalance(balance.totalCashOut),
+              ),
               const SizedBox(
                 height: 10,
               ),
-              totalLabel(label: 'Sold final', value: balance.finalBalance)
+              BalanceRow(
+                content: AppLocalizations.of(context)!
+                    .totalCashInBalance(balance.finalBalance),
+              ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Text totalLabel({required String label, required double value}) {
-    return Text(
-      '$label :  $value lei',
-      style: const TextStyle(
-        color: Colors.white,
       ),
     );
   }

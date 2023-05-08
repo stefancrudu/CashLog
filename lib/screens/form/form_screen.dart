@@ -7,6 +7,7 @@ import 'package:cash_log/screens/form/components/dropdown_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FormScreen extends ConsumerStatefulWidget {
   Document? document;
@@ -19,7 +20,11 @@ class FormScreen extends ConsumerStatefulWidget {
 
 class _FormScreenState extends ConsumerState<FormScreen> {
   Widget get titleScreen {
-    return Text(widget.document == null ? 'New post' : 'Edit post');
+    return Text(
+      widget.document == null
+          ? AppLocalizations.of(context)!.newPostTitle
+          : AppLocalizations.of(context)!.editPostTitle,
+    );
   }
 
   var _date = DateTime.now();
@@ -82,7 +87,7 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                 },
               ),
               DropdownFormField(
-                labelText: 'Type',
+                labelText: AppLocalizations.of(context)!.typeFormLabel,
                 options: DocumentType.values.map((e) => e.name).toList(),
                 initialValue: widget.document?.type.name ??
                     DocumentType.values.first.name,
@@ -92,12 +97,13 @@ class _FormScreenState extends ConsumerState<FormScreen> {
               ),
               TextFormField(
                 initialValue: widget.document?.number ?? '',
-                decoration: const InputDecoration(
-                  labelText: 'Number',
+                decoration: InputDecoration(
+                  labelText: AppLocalizations.of(context)!.numberFormLabel,
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the number of the document';
+                    return AppLocalizations.of(context)!
+                        .errorMessageDocumentNumber;
                   }
                   return null;
                 },
@@ -107,12 +113,13 @@ class _FormScreenState extends ConsumerState<FormScreen> {
               ),
               TextFormField(
                 initialValue: widget.document?.description ?? '',
-                decoration: const InputDecoration(
-                  labelText: 'Description',
+                decoration: InputDecoration(
+                  labelText: AppLocalizations.of(context)!.descriptionFormLabel,
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter some text for description';
+                    return AppLocalizations.of(context)!
+                        .errorMessageDocumentDescription;
                   }
                   return null;
                 },
@@ -122,8 +129,8 @@ class _FormScreenState extends ConsumerState<FormScreen> {
               ),
               TextFormField(
                 initialValue: widget.document?.value.toString(),
-                decoration: const InputDecoration(
-                  labelText: 'Value',
+                decoration: InputDecoration(
+                  labelText: AppLocalizations.of(context)!.valueFormLabel,
                 ),
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
@@ -132,7 +139,8 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                 ],
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter some value';
+                    return AppLocalizations.of(context)!
+                        .errorMessageDocumentValue;
                   }
                   return null;
                 },
@@ -144,7 +152,8 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                 initialValue: widget.document?.isCashIn ?? false,
                 builder: (FormFieldState<bool> field) {
                   return SwitchListTile(
-                    title: const Text("It's cash in?"),
+                    title: Text(
+                        AppLocalizations.of(context)!.cashInOptionFormLabel),
                     value: field.value ?? false,
                     onChanged: (val) {
                       field.didChange(val);
@@ -165,7 +174,8 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                     ),
                     onPressed: _deleteAction,
                     icon: const Icon(Icons.delete_outlined),
-                    label: const Text('Delete document'),
+                    label:
+                        Text(AppLocalizations.of(context)!.deleteLabelButton),
                   ),
                 ),
             ],

@@ -2,6 +2,8 @@ import 'package:cash_log/extensions/formated_date.dart';
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class DatePickerFormField extends StatefulWidget {
   final DateTime? initialValue;
 
@@ -45,8 +47,8 @@ class _DatePickerFormFieldState extends State<DatePickerFormField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: dateController,
-      decoration: const InputDecoration(
-        labelText: 'Date',
+      decoration: InputDecoration(
+        labelText: AppLocalizations.of(context)!.dateFormLabel,
       ),
       readOnly: true,
       onTap: () async {

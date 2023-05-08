@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:cash_log/models/document.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DocumentRow extends StatelessWidget {
   const DocumentRow({
@@ -12,14 +15,14 @@ class DocumentRow extends StatelessWidget {
   final Document document;
   final void Function(Document entry) onPressed;
 
-  Text get getFormatedDocumentValueWidget {
+  Text getFormatedDocumentValueWidget(BuildContext context) {
     if (document.isCashIn) {
       return Text(
-        '${document.value} lei',
+        AppLocalizations.of(context)!.documentRowValue(document.value),
       );
     } else {
       return Text(
-        '- ${document.value} lei',
+        AppLocalizations.of(context)!.documentRowValue(0 - document.value),
         style: const TextStyle(
           color: Colors.red,
         ),
@@ -49,7 +52,7 @@ class DocumentRow extends StatelessWidget {
                       ),
                       Text(document.number),
                       const Spacer(),
-                      getFormatedDocumentValueWidget,
+                      getFormatedDocumentValueWidget(context),
                     ],
                   )
                 ],
