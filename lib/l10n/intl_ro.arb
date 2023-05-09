@@ -1,0 +1,20 @@
+{
+    "documentRowValue": "{value}",
+    "initialBalance": "Sold inital: {value}",
+    "totalCashOutBalance": "Total platit: {value}",
+    "totalCashInBalance": "Total incasat: {value}",
+    "finalBalance": "Sold final: {value}",
+    "noDocumentsMessage": "Nu ai documente.",
+    "newPostTitle": "Document nou",
+    "editPostTitle": "Editeaza document",
+    "dateFormLabel": "Data",
+    "typeFormLabel": "Tip document",
+    "numberFormLabel": "Numar document",
+    "descriptionFormLabel": "Descriere",
+    "valueFormLabel": "Valoare document",
+    "cashInOptionFormLabel": "Sunt bani incasati?",
+    "errorMessageDocumentNumber": "Introdu numarul documentului",
+    "errorMessageDocumentDescription": "Introdu o descriere",
+    "errorMessageDocumentValue": "Introdu valoarea documentului",
+    "deleteLabelButton": "Sterge documentul"
+}

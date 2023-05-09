@@ -1,0 +1,119 @@
+{
+    "documentRowValue": " {value}",
+    "@documentRowValue": {
+        "description": "The value from document in list",
+        "placeholders": {
+            "value": {
+                "type": "double",
+                "format": "simpleCurrency",
+                "optionalParameters": {
+                    "decimalDigits": 2
+                }
+            }
+        }
+    },
+    "initialBalance": "Initial balance: {value}",
+    "@initialBalance": {
+        "description": "Initial value in balance widget",
+        "placeholders": {
+            "value": {
+                "type": "double",
+                "format": "simpleCurrency",
+                "optionalParameters": {
+                    "decimalDigits": 2
+                }
+            }
+        }
+    },
+    "totalCashOutBalance": "Total cash out: {value}",
+    "@totalCashOutBalance": {
+        "description": "Total cash out value in balance widget",
+        "placeholders": {
+            "value": {
+                "type": "double",
+                "format": "simpleCurrency",
+                "optionalParameters": {
+                    "decimalDigits": 2
+                }
+            }
+        }
+    },
+    "totalCashInBalance": "Total cash in: {value}",
+    "@totalCashInBalance": {
+        "description": "Total cash out value in balance widget",
+        "placeholders": {
+            "value": {
+                "type": "double",
+                "format": "simpleCurrency",
+                "optionalParameters": {
+                    "decimalDigits": 2
+                }
+            }
+        }
+    },
+    "finalBalance": "Final balance: {value}",
+    "@finalBalance": {
+        "description": "Final value in balance widget",
+        "placeholders": {
+            "value": {
+                "type": "double",
+                "format": "simpleCurrency",
+                "optionalParameters": {
+                    "decimalDigits": 2
+                }
+            }
+        }
+    },
+    "noDocumentsMessage": "You don't have documents.",
+    "@noDocumentsMessage": {
+        "description": "The message when selected day has no documents"
+    },
+    "newPostTitle": "New Post",
+    "@newPostTitle": {
+        "description": "Title form for new document"
+    },
+    "editPostTitle": "Edit Post",
+    "@editPostTitle": {
+        "description": "Title form for editing document"
+    },
+    "dateFormLabel": "Date",
+    "@dateFormLabel": {
+        "description": "Label for date from form"
+    },
+    "typeFormLabel": "Document Type",
+    "@typeFormLabel": {
+        "description": "Label for document type from form"
+    },
+    "numberFormLabel": "Document Number",
+    "@numberFormLabel": {
+        "description": "Label for document number from form"
+    },
+    "descriptionFormLabel": "Description",
+    "@descriptionFormLabel": {
+        "description": "Label for document description from form"
+    },
+    "valueFormLabel": "Document Value",
+    "@valueFormLabel": {
+        "description": "Label for document value from form"
+    },
+    "cashInOptionFormLabel": "It's cash in?",
+    "@cashInOptionFormLabel": {
+        "description": "Label for document if is cash in or out from form"
+    },
+    "errorMessageDocumentNumber": "Please enter the number of the document",
+    "@errorMessageDocumentNumber": {
+        "description": "The message error for empty number field"
+    },
+    "errorMessageDocumentDescription": "Please enter some text for description",
+    "@errorMessageDocumentDescription": {
+        "description": "The message error for empty description field"
+    },
+    "errorMessageDocumentValue": "Please enter a value for the document",
+    "@errorMessageDocumentValue": {
+        "description": "The message error for empty value field"
+    },
+    "deleteLabelButton": "Delete document",
+    "@deleteLabelButton": {
+        "description": "Label for delete button on document form when is editing"
+    }
+}

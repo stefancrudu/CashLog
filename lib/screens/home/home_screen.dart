@@ -1,3 +1,4 @@
+import 'package:cash_log/generated/l10n.dart';
 import 'package:cash_log/models/document.dart';
 import 'package:cash_log/providers/documents_provider.dart';
 import 'package:cash_log/extensions/formated_date.dart';
@@ -89,8 +90,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           children: [
             documents.list.isNotEmpty
                 ? listView
-                : const Center(
-                    child: Text('You don\'t have documnents.'),
+                : Center(
+                    child: Text(S.of(context).noDocumentsMessage),
                   ),
             BalanceWidget(
               balance: documents.balance,

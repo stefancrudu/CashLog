@@ -1,12 +1,14 @@
+import 'package:cash_log/generated/l10n.dart';
 import 'package:cash_log/models/balance.dart';
+import 'package:cash_log/screens/home/components/balance_row.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BalanceWidget extends StatelessWidget {
-  Balance balance;
+  final Balance balance;
 
-  BalanceWidget({
+  const BalanceWidget({
     super.key,
     required this.balance,
   });
@@ -28,19 +30,28 @@ class BalanceWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              totalLabel(label: 'Sold inital', value: balance.initialBalance),
+              BalanceRow(
+                content: S.of(context).initialBalance(balance.initialBalance),
+              ),
               const SizedBox(
                 height: 10,
               ),
-              totalLabel(label: 'Total de incasat', value: balance.totalCashIn),
+              BalanceRow(
+                content: S.of(context).totalCashInBalance(balance.totalCashIn),
+              ),
               const SizedBox(
                 height: 10,
               ),
-              totalLabel(label: 'Total de plata', value: balance.totalCashOut),
+              BalanceRow(
+                content:
+                    S.of(context).totalCashOutBalance(balance.totalCashOut),
+              ),
               const SizedBox(
                 height: 10,
               ),
-              totalLabel(label: 'Sold final', value: balance.finalBalance)
+              BalanceRow(
+                content: S.of(context).totalCashInBalance(balance.finalBalance),
+              ),
             ],
           ),
         ),

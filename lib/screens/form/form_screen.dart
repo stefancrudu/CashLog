@@ -1,3 +1,4 @@
+import 'package:cash_log/generated/l10n.dart';
 import 'package:cash_log/models/document.dart';
 import 'package:cash_log/providers/documents_provider.dart';
 
@@ -19,7 +20,11 @@ class FormScreen extends ConsumerStatefulWidget {
 
 class _FormScreenState extends ConsumerState<FormScreen> {
   Widget get titleScreen {
-    return Text(widget.document == null ? 'New post' : 'Edit post');
+    return Text(
+      widget.document == null
+          ? S.of(context).newPostTitle
+          : S.of(context).editPostTitle,
+    );
   }
 
   var _date = DateTime.now();
@@ -82,7 +87,7 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                 },
               ),
               DropdownFormField(
-                labelText: 'Type',
+                labelText: S.of(context).typeFormLabel,
                 options: DocumentType.values.map((e) => e.name).toList(),
                 initialValue: widget.document?.type.name ??
                     DocumentType.values.first.name,
@@ -92,12 +97,12 @@ class _FormScreenState extends ConsumerState<FormScreen> {
               ),
               TextFormField(
                 initialValue: widget.document?.number ?? '',
-                decoration: const InputDecoration(
-                  labelText: 'Number',
+                decoration: InputDecoration(
+                  labelText: S.of(context).numberFormLabel,
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the number of the document';
+                    return S.of(context).errorMessageDocumentNumber;
                   }
                   return null;
                 },
@@ -107,12 +112,12 @@ class _FormScreenState extends ConsumerState<FormScreen> {
               ),
               TextFormField(
                 initialValue: widget.document?.description ?? '',
-                decoration: const InputDecoration(
-                  labelText: 'Description',
+                decoration: InputDecoration(
+                  labelText: S.of(context).descriptionFormLabel,
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter some text for description';
+                    return S.of(context).errorMessageDocumentDescription;
                   }
                   return null;
                 },
@@ -122,8 +127,8 @@ class _FormScreenState extends ConsumerState<FormScreen> {
               ),
               TextFormField(
                 initialValue: widget.document?.value.toString(),
-                decoration: const InputDecoration(
-                  labelText: 'Value',
+                decoration: InputDecoration(
+                  labelText: S.of(context).valueFormLabel,
                 ),
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
@@ -132,7 +137,7 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                 ],
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter some value';
+                    return S.of(context).errorMessageDocumentValue;
                   }
                   return null;
                 },
@@ -144,7 +149,7 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                 initialValue: widget.document?.isCashIn ?? false,
                 builder: (FormFieldState<bool> field) {
                   return SwitchListTile(
-                    title: const Text("It's cash in?"),
+                    title: Text(S.of(context).cashInOptionFormLabel),
                     value: field.value ?? false,
                     onChanged: (val) {
                       field.didChange(val);
@@ -165,7 +170,7 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                     ),
                     onPressed: _deleteAction,
                     icon: const Icon(Icons.delete_outlined),
-                    label: const Text('Delete document'),
+                    label: Text(S.of(context).deleteLabelButton),
                   ),
                 ),
             ],
