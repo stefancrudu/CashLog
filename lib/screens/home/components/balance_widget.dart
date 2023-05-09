@@ -1,3 +1,4 @@
+import 'package:cash_log/assets/constants/core_constants.dart';
 import 'package:cash_log/models/balance.dart';
 
 import 'package:flutter/material.dart';
@@ -14,31 +15,38 @@ class BalanceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 0,
-      right: 0,
+      bottom: CoreConstants.balanceWidgetBottomPosition,
+      right: CoreConstants.balanceWidgetRightPosition,
       child: Card(
-        margin: const EdgeInsets.all(20.0),
+        margin: const EdgeInsets.all(
+          CoreConstants.marginMaximum,
+        ),
         color: Theme.of(context).colorScheme.primary,
         elevation: 5,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(
+            CoreConstants.cornerRadius,
+          ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          padding: const EdgeInsets.symmetric(
+            vertical: CoreConstants.marginQuarter,
+            horizontal: CoreConstants.marginMaximum,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               totalLabel(label: 'Sold inital', value: balance.initialBalance),
               const SizedBox(
-                height: 10,
+                height: CoreConstants.marginMinimum,
               ),
               totalLabel(label: 'Total de incasat', value: balance.totalCashIn),
               const SizedBox(
-                height: 10,
+                height: CoreConstants.marginMinimum,
               ),
               totalLabel(label: 'Total de plata', value: balance.totalCashOut),
               const SizedBox(
-                height: 10,
+                height: CoreConstants.marginMinimum,
               ),
               totalLabel(label: 'Sold final', value: balance.finalBalance)
             ],

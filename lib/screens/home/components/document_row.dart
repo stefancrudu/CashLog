@@ -1,3 +1,4 @@
+import 'package:cash_log/assets/constants/core_constants.dart';
 import 'package:cash_log/models/document.dart';
 
 import 'package:flutter/material.dart';
@@ -30,10 +31,16 @@ class DocumentRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
+      margin: const EdgeInsets.only(
+        left: CoreConstants.marginMinimum,
+        right: CoreConstants.marginMinimum,
+        top: CoreConstants.marginMinimum,
+      ),
       elevation: 2,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(
+          CoreConstants.marginThreeQuarters,
+        ),
         child: Row(
           children: [
             Expanded(
@@ -45,7 +52,7 @@ class DocumentRow extends StatelessWidget {
                     children: [
                       Text(document.type.name.toUpperCase()),
                       const SizedBox(
-                        width: 20,
+                        width: CoreConstants.marginMaximum,
                       ),
                       Text(document.number),
                       const Spacer(),
@@ -56,11 +63,11 @@ class DocumentRow extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 20,
+              width: CoreConstants.marginMaximum,
             ),
             IconButton(
               color: Theme.of(context).colorScheme.primary,
-              icon: const Icon(Icons.info_outline),
+              icon: CoreConstants.infoIcon,
               onPressed: () => onPressed(document),
             ),
           ],

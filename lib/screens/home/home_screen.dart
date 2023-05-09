@@ -1,3 +1,4 @@
+import 'package:cash_log/assets/constants/core_constants.dart';
 import 'package:cash_log/models/document.dart';
 import 'package:cash_log/providers/documents_provider.dart';
 import 'package:cash_log/extensions/formated_date.dart';
@@ -39,8 +40,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     showDatePicker(
       context: context,
       initialDate: _filterDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime.now(),
+      firstDate: CoreConstants.firstDate,
+      lastDate: CoreConstants.lastDate,
     ).then((pickedDate) {
       setState(() {
         _filterDate = pickedDate ?? _filterDate;
@@ -60,15 +61,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       actions: [
         IconButton(
           onPressed: selectDate,
-          icon: const Icon(Icons.edit_calendar_outlined),
+          icon: CoreConstants.datePickerIcon,
         ),
         IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.print_outlined),
+          icon: CoreConstants.printIcon,
         ),
         IconButton(
           onPressed: () => navigateToForm(dateTime: _filterDate),
-          icon: const Icon(Icons.add),
+          icon: CoreConstants.addIcon,
         ),
       ],
     );
