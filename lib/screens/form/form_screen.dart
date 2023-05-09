@@ -1,3 +1,5 @@
+import 'package:cash_log/assets/constants/kicon.dart';
+import 'package:cash_log/assets/constants/ksize.dart';
 import 'package:cash_log/models/document.dart';
 import 'package:cash_log/providers/documents_provider.dart';
 
@@ -11,7 +13,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FormScreen extends ConsumerStatefulWidget {
   Document? document;
-  DateTime? dateTime;
+  final DateTime? dateTime;
   FormScreen({super.key, this.document, this.dateTime});
 
   @override
@@ -76,7 +78,10 @@ class _FormScreenState extends ConsumerState<FormScreen> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20),
+          padding: const EdgeInsets.only(
+            left: KSize.marginMaximum,
+            right: KSize.marginMaximum,
+          ),
           child: Column(
             children: [
               DatePickerFormField(
@@ -167,13 +172,15 @@ class _FormScreenState extends ConsumerState<FormScreen> {
               const Spacer(),
               if (widget.document?.id != null)
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  margin: const EdgeInsets.symmetric(
+                    vertical: KSize.marginMaximum,
+                  ),
                   child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: Theme.of(context).colorScheme.error,
                     ),
                     onPressed: _deleteAction,
-                    icon: const Icon(Icons.delete_outlined),
+                    icon: KIcon.deleteIcon,
                     label:
                         Text(AppLocalizations.of(context)!.deleteLabelButton),
                   ),

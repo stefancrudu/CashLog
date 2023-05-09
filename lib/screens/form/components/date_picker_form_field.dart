@@ -1,19 +1,18 @@
+import 'package:cash_log/assets/constants/kdate.dart';
 import 'package:cash_log/extensions/formated_date.dart';
 
 import 'package:flutter/material.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DatePickerFormField extends StatefulWidget {
   final DateTime? initialValue;
+  final void Function(DateTime newValue) onSavedValue;
 
-  DatePickerFormField({
+  const DatePickerFormField({
     super.key,
     this.initialValue,
     required this.onSavedValue,
   });
-
-  void Function(DateTime newValue) onSavedValue;
 
   @override
   State<DatePickerFormField> createState() => _DatePickerFormFieldState();
@@ -35,8 +34,8 @@ class _DatePickerFormFieldState extends State<DatePickerFormField> {
     DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime.now(),
+      firstDate: KDate.firstDate,
+      lastDate: KDate.lastDate,
     );
     if (pickedDate != null) {
       onSelectedDate(pickedDate);

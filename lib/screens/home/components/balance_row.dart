@@ -1,3 +1,4 @@
+import 'package:cash_log/assets/constants/ksize.dart';
 import 'package:flutter/material.dart';
 
 class BalanceRow extends StatelessWidget {
@@ -7,9 +8,14 @@ class BalanceRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      content,
-      style: const TextStyle(color: Colors.white),
+    return Container(
+      margin: const EdgeInsets.only(top: KSize.marginMinimum),
+      child: Text(
+        content,
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+      ),
     );
   }
 }

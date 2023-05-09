@@ -30,7 +30,6 @@ class App extends StatelessWidget {
             return locale;
           }
         }
-
         return L10n.defaultLanguage;
       },
     );

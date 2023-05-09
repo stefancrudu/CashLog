@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:cash_log/assets/constants/ksize.dart';
 import 'package:cash_log/models/document.dart';
 
 import 'package:flutter/material.dart';
@@ -23,9 +22,9 @@ class DocumentRow extends StatelessWidget {
     } else {
       return Text(
         AppLocalizations.of(context)!.documentRowValue(0 - document.value),
-        style: const TextStyle(
-          color: Colors.red,
-        ),
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              color: Theme.of(context).colorScheme.error,
+            ),
       );
     }
   }
@@ -33,10 +32,16 @@ class DocumentRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
-      elevation: 2,
+      margin: const EdgeInsets.only(
+        left: KSize.marginHalf,
+        right: KSize.marginHalf,
+        top: KSize.marginHalf,
+      ),
+      elevation: KSize.elevationCardDocumentRow,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(
+          KSize.marginThreeQuarters,
+        ),
         child: Row(
           children: [
             Expanded(
@@ -48,7 +53,7 @@ class DocumentRow extends StatelessWidget {
                     children: [
                       Text(document.type.name.toUpperCase()),
                       const SizedBox(
-                        width: 20,
+                        width: KSize.marginMaximum,
                       ),
                       Text(document.number),
                       const Spacer(),
@@ -59,7 +64,7 @@ class DocumentRow extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 20,
+              width: KSize.marginMaximum,
             ),
             IconButton(
               color: Theme.of(context).colorScheme.primary,

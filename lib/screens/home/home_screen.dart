@@ -1,3 +1,5 @@
+import 'package:cash_log/assets/constants/kdate.dart';
+import 'package:cash_log/assets/constants/kicon.dart';
 import 'package:cash_log/models/document.dart';
 import 'package:cash_log/providers/documents_provider.dart';
 import 'package:cash_log/extensions/formated_date.dart';
@@ -40,8 +42,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     showDatePicker(
       context: context,
       initialDate: _filterDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime.now(),
+      firstDate: KDate.firstDate,
+      lastDate: KDate.lastDate,
     ).then((pickedDate) {
       setState(() {
         _filterDate = pickedDate ?? _filterDate;
@@ -61,15 +63,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       actions: [
         IconButton(
           onPressed: selectDate,
-          icon: const Icon(Icons.edit_calendar_outlined),
+          icon: KIcon.datePickerIcon,
         ),
         IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.print_outlined),
+          icon: KIcon.printIcon,
         ),
         IconButton(
           onPressed: () => navigateToForm(dateTime: _filterDate),
-          icon: const Icon(Icons.add),
+          icon: KIcon.addIcon,
         ),
       ],
     );
@@ -85,19 +87,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
 
     return Scaffold(
-        appBar: homeAppBar,
-        body: Stack(
-          children: [
-            documents.list.isNotEmpty
-                ? listView
-                : Center(
-                    child:
-                        Text(AppLocalizations.of(context)!.noDocumentsMessage),
-                  ),
-            BalanceWidget(
-              balance: documents.balance,
-            ),
-          ],
-        ));
+      appBar: homeAppBar,
+      body: Stack(
+        children: [
+          documents.list.isNotEmpty
+              ? listView
+              : Center(
+                  child: Text(AppLocalizations.of(context)!.noDocumentsMessage),
+                ),
+          BalanceWidget(
+            balance: documents.balance,
+          ),
+        ],
+      ),
+    );
   }
 }

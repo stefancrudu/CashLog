@@ -1,3 +1,5 @@
+import 'package:cash_log/assets/constants/kposition.dart';
+import 'package:cash_log/assets/constants/ksize.dart';
 import 'package:cash_log/models/balance.dart';
 import 'package:cash_log/screens/home/components/balance_row.dart';
 
@@ -16,17 +18,22 @@ class BalanceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 0,
-      right: 0,
+      bottom: KPosition.balanceWidgetBottomPozition,
+      right: KPosition.balanceWidgetRightPozition,
       child: Card(
-        margin: const EdgeInsets.all(20.0),
+        margin: const EdgeInsets.all(KSize.marginMaximum),
         color: Theme.of(context).colorScheme.primary,
-        elevation: 5,
+        elevation: KSize.elevationBalanceWidget,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(
+            KSize.cornerRadius,
+          ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          padding: const EdgeInsets.symmetric(
+            vertical: KSize.marginThreeQuarters,
+            horizontal: KSize.marginMaximum,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -34,22 +41,13 @@ class BalanceWidget extends StatelessWidget {
                 content: AppLocalizations.of(context)!
                     .initialBalance(balance.initialBalance),
               ),
-              const SizedBox(
-                height: 10,
-              ),
               BalanceRow(
                 content: AppLocalizations.of(context)!
                     .totalCashInBalance(balance.totalCashIn),
               ),
-              const SizedBox(
-                height: 10,
-              ),
               BalanceRow(
                 content: AppLocalizations.of(context)!
                     .totalCashOutBalance(balance.totalCashOut),
-              ),
-              const SizedBox(
-                height: 10,
               ),
               BalanceRow(
                 content: AppLocalizations.of(context)!
