@@ -1,3 +1,4 @@
+import 'package:cash_log/assets/constants/core_constants.dart';
 import 'package:cash_log/models/document.dart';
 import 'package:cash_log/providers/documents_provider.dart';
 
@@ -71,7 +72,10 @@ class _FormScreenState extends ConsumerState<FormScreen> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20),
+          padding: const EdgeInsets.only(
+            left: CoreConstants.marginMaximum,
+            right: CoreConstants.marginMaximum,
+          ),
           child: Column(
             children: [
               DatePickerFormField(
@@ -158,13 +162,15 @@ class _FormScreenState extends ConsumerState<FormScreen> {
               const Spacer(),
               if (widget.document?.id != null)
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  margin: const EdgeInsets.symmetric(
+                    vertical: CoreConstants.marginMaximum,
+                  ),
                   child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: Theme.of(context).colorScheme.error,
                     ),
                     onPressed: _deleteAction,
-                    icon: const Icon(Icons.delete_outlined),
+                    icon: CoreConstants.deleteIcon,
                     label: const Text('Delete document'),
                   ),
                 ),
