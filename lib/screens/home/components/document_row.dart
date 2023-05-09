@@ -1,3 +1,4 @@
+import 'package:cash_log/generated/l10n.dart';
 import 'package:cash_log/models/document.dart';
 
 import 'package:flutter/material.dart';
@@ -15,11 +16,11 @@ class DocumentRow extends StatelessWidget {
   Text get getFormatedDocumentValueWidget {
     if (document.isCashIn) {
       return Text(
-        '${document.value} lei',
+        S.current.documentRowValue(document.value),
       );
     } else {
       return Text(
-        '- ${document.value} lei',
+        S.current.documentRowValue(0 - document.value),
         style: const TextStyle(
           color: Colors.red,
         ),
